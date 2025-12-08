@@ -4,3 +4,30 @@ Take Scikit-learn and Pytorch models and deploy it using docker on AWS lambda
 I have used UV INIT locally to be able to use Python and Docker safely before deploying on AWS lambda
 
 
+## Recommended workflow for ML model inference with Lambda
+
+This is the cleanest setup if planning ML in Lambda:
+
+-- Keep ML code + model in src/app/
+
+-- Keep lambda handler minimal in src/lambda/
+
+-- Develop/test locally using uv
+
+-- Build a Docker container that wraps Lambda
+
+-- Test container locally
+
+-- Deploy container to AWS Lambda
+
+-- Trigger via API Gateway
+
+This gives us:
+
+-- Full local reproducibility
+
+-- No dependency hell
+
+-- No AWS surprises
+
+-- Easy commits to GitHub

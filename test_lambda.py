@@ -1,10 +1,12 @@
 import boto3
 import json
+from botocore.config import Config
 
-# Create a Lambda client using your AWS profile + region
-lambda_client = boto3.client(
+session = boto3.Session(profile_name="lambda-dev")
+
+lambda_client = session.client(
     "lambda",
-    region_name="eu-central-1",   # Frankfurt
+    region_name="eu-central-1",
 )
 
 def invoke_lambda(a, b):

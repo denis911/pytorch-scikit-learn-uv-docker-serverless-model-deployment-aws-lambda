@@ -25,5 +25,5 @@ def invoke_lambda(a, b):
     return result
 
 if __name__ == "__main__":
-    out = invoke_lambda(10, 20)
+    out = invoke_lambda(1000, 333)
     print(out)

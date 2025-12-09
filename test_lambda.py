@@ -9,21 +9,39 @@ lambda_client = session.client(
     region_name="eu-central-1",
 )
 
-def invoke_lambda(a, b):
-    payload = {
-        "a": a,
-        "b": b
-    }
 
-    response = lambda_client.invoke(
-        FunctionName="add_number_denis911",
-        InvocationType="RequestResponse",
-        Payload=json.dumps(payload)
-    )
+# lambda_client = boto3.client('lambda')
 
-    result = json.loads(response["Payload"].read())
-    return result
+customer = {
+  "customer": {
+    "gender": "female",
+    "seniorcitizen": 0,
+    "partner": "yes",
+    "dependents": "no",
+    "phoneservice": "no",
+    "multiplelines": "no_phone_service",
+    "internetservice": "dsl",
+    "onlinesecurity": "no",
+    "onlinebackup": "yes",
+    "deviceprotection": "no",
+    "techsupport": "no",
+    "streamingtv": "no",
+    "streamingmovies": "no",
+    "contract": "month-to-month",
+    "paperlessbilling": "yes",
+    "paymentmethod": "electronic_check",
+    "tenure": 1,
+    "monthlycharges": 29.85,
+    "totalcharges": 29.85
+  }
+}
 
-if __name__ == "__main__":
-    out = invoke_lambda(1000, 333)
-    print(out)
+response = lambda_client.invoke(
+    FunctionName='churn-prediction',
+    InvocationType='RequestResponse',
+    Payload=json.dumps(customer)
+)
+
+result = json.loads(response['Payload'].read())
+print(json.dumps(result, indent=2))
+

@@ -1,5 +1,15 @@
-def lambda_handler(event, context):
-    a = event.get("a", 0)
-    b = event.get("b", 0)
-    return {"result": a * b}
-# modified locally - * instead of + 
+def predict_single(customer):
+    # we will put our model here
+    return 0.56
+
+def lambda_handler(event, context):    
+    print("Parameters:", event)
+    customer = event['customer']
+    prob = predict_single(customer)
+    return {
+        "churn_probability": prob,
+        "churn": bool(prob >= 0.5)
+    }
+
+# this is dummy prediction function which predicts churn for all inputs
+

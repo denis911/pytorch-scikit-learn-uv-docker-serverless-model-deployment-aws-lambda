@@ -29,7 +29,7 @@ docker tag ${IMAGE_NAME}:${IMAGE_TAG} ${IMAGE_URI}
 docker push ${IMAGE_URI}
 
 aws lambda update-function-code \
-  --function-name churn-prediction-docker \
+  --function-name churn-prediction \
   --image-uri ${IMAGE_URI} \
   --region ${AWS_REGION}
 

@@ -1,11 +1,13 @@
 [project]
 name = "pytorch-scikit-learn-uv-docker-serverless-model-deployment-aws-lambda"
 version = "0.1.0"
-description = "Add your description here"
+requires-python = ">=3.13"   # Lambda-compatible
+description = "SKL model Lambda"
 readme = "README.md"
-requires-python = ">=3.14"
+
+
 dependencies = [
+    "scikit-learn>=1.7.1",
     "boto3>=1.42.5",
-    "pandas>=2.3.3",
-    "scikit-learn>=1.7.2",
 ]
+

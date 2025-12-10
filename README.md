@@ -31,3 +31,20 @@ This gives us:
 -- No AWS surprises
 
 -- Easy commits to GitHub
+
+## Docker
+
+Build it:
+
+docker build -t churn-prediction-lambda .
+
+Run it:
+
+docker run -it --rm -p 8080:8080  churn-prediction-lambda
+
+Test it:
+
+url = 'http://localhost:8080/2015-03-31/functions/function/invocations'
+
+result = requests.post(url, json=customer).json()
+print(result)

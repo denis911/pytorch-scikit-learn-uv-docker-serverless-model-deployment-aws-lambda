@@ -36,6 +36,8 @@ customer = {
   }
 }
 
+# to test false churn prediction set  "tenure": 100,
+
 response = lambda_client.invoke(
     FunctionName='churn-prediction',
     InvocationType='RequestResponse',
